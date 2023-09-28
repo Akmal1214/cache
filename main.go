@@ -1,13 +1,34 @@
 package main
 
-import "fmt"
+type Cache struct {
+	items map[string]Item
+}
 
-func main() {
-	users := map[string]string  {
-		"name": "Akmal",
-		"age": "15",
+type Item struct {
+	Value interface{}
+}
+
+func New() *Cache {
+	items := make(map[string]Item)
+	cache := Cache{
+		items: items,
 	}
+	return &cache
+}
 
-	fmt.Println(users["name"])
+func (c *Cache) Set(key string, value interface{}) {
+	c.items[key] = Item{
+		Value: value,
+	}
+}
 
+func (c *Cache) Get(key string) interface{} {
+	item := c.items[key]
+	return item
+}
+
+func (c *Cache) Delete(key string) interface{} {
+	item := c.items[key]
+	delete(c.items, key)
+	return item
 }
