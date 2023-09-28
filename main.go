@@ -1,4 +1,4 @@
-package main
+package cache
 
 type Cache struct {
 	items map[string]Item
