@@ -16,18 +16,18 @@ func New() *Cache {
 	return &cache
 }
 
-func (c *Cache) Set(key string, value interface{}) {
+func (c *Cache) Set(key int, value interface{}) {
 	c.items[key] = Item{
 		Value: value,
 	}
 }
 
-func (c *Cache) Get(key string) interface{} {
+func (c *Cache) Get(key int) interface{} {
 	item := c.items[key]
 	return item
 }
 
-func (c *Cache) Delete(key string) interface{} {
+func (c *Cache) Delete(key int) interface{} {
 	item := c.items[key]
 	delete(c.items, key)
 	return item
